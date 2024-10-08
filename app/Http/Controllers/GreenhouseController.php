@@ -18,9 +18,6 @@ class GreenhouseController extends Controller
     }
 
     public function control(Request $request) {
-        // Here, you would send control signals to the greenhouse system
-        // For now, we'll just display the submitted data
-        
         // Validate incoming data
         $request->validate([
             'temperature' => 'required|numeric',
@@ -34,5 +31,11 @@ class GreenhouseController extends Controller
         
         // Redirect back with a success message
         return redirect()->back()->with('message', 'Settings updated successfully!');
+    }
+
+    // If you want to render a control view without form submission,
+    // you can create a separate method to just show the form
+    public function showControl() {
+        return view('control'); // Ensure the view name matches the file name
     }
 }
